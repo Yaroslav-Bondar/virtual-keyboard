@@ -1,0 +1,9 @@
+.key {
+  border-radius: $key-border-radius;
+  &__system {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    background-color: $mid-grey;
+  } 
+}
