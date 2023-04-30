@@ -10,8 +10,3 @@
     align-items: center;
     justify-content: center;
 }
-
-@mixin row($column-gap) {
-    column-gap: $column-gap;
-}
-

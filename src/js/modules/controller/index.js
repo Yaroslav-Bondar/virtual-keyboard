@@ -14,7 +14,8 @@ class Controller {
     if (this.#mountPoint === null) throw new Error('Mount point is null.');
     this.#model = new Model(language);
     this.#view = new View(this.#mountPoint);
-    this.#view.render(this.#model.keyInfo, this.#model.renderKeyList, this.#model.language);
+    // this.#model.renderKeyList,
+    this.#view.render(this.#model.keyInfo, this.#model.language);
     this.#view.bindLanguageChange(this.#handleLanguageChange);
   }
 
@@ -23,9 +24,9 @@ class Controller {
     this.#model.changeLanguage();
     this.#view.displayLanguage(
       this.#model.keyInfo,
-      this.#model.langChangeList,
+      // this.#model.langChangeList,
       this.#model.language,
-      this.#model.capsLockMode,
+      // this.#model.capsLockMode,
     );
   };
 }

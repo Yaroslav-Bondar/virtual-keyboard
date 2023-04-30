@@ -4,8 +4,4 @@
   border: $keyboard-border;
   border-radius: $key-border-radius;
   background-color: $light-grey;
-  &__row {
-    display: flex;
-    @include row($keyboard-row-gap);
-  }
 }
