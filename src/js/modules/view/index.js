@@ -44,28 +44,50 @@ class View {
     this.#mountPoint.prepend(this.#keyboard);
   }
 
-  bindLanguageChange(handler) {
+  bindLanguageMode(handler) {
     document.addEventListener('keydown', (event) => {
-      if (event.code === 'ShiftLeft' && event.ctrlKey) {
+      // console.log('event', event);
+      if (event.code === 'ControlLeft' && event.altKey) {
+        // console.log('event', true);
+        // if (event.code === 'ControlLeft' && event.code === 'AltLeft') {
         handler();
       }
     });
   }
 
-  // bindShiftMode(handler) {
-  //   document.addEventListener('keydown', (event) => {
-  //     if (event.code === 'ShiftLeft' || 'ShiftRight') {
-  //       handler();
-  //     }
-  //   });
-  // }
+  bindShiftMode(handler) {
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+        console.log('event', event);
+        handler();
+      }
+    });
+    document.addEventListener('keyup', (event) => {
+      if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+        console.log('event', event);
+        handler();
+      }
+    });
+  }
+
+  displayShiftMode(keyInfo, lang) {
+    Object.keys(keyInfo).forEach((keyCode) => {
+      const shiftModePath = keyInfo[keyCode].shiftMode;
+      if (shiftModePath) {
+        const value = shiftModePath[lang];
+        const key = this.#keyboard.querySelector(`[data-key-code=${keyCode}]`);
+        key.textContent = value;
+      }
+    });
+    // console.log('shift mode', shiftMode);
+  }
 
   // list, lang, capsLockMode
   displayLanguage(keyInfo, lang) {
     Object.keys(keyInfo).forEach((keyCode) => {
-      const langPath = keyInfo[keyCode].langMode;
-      if (langPath) {
-        const value = langPath[lang];
+      const langModePath = keyInfo[keyCode].langMode;
+      if (langModePath) {
+        const value = langModePath[lang];
         const key = this.#keyboard.querySelector(`[data-key-code=${keyCode}]`);
         key.textContent = value;
       }

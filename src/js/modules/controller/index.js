@@ -16,11 +16,12 @@ class Controller {
     this.#view = new View(this.#mountPoint);
     // this.#model.renderKeyList,
     this.#view.render(this.#model.keyInfo, this.#model.language);
-    this.#view.bindLanguageChange(this.#handleLanguageChange);
+    this.#view.bindLanguageMode(this.#handleLanguageMode);
+    this.#view.bindShiftMode(this.#handleShiftMode);
   }
 
   // using an arrow function to properly store the value of "this" when called
-  #handleLanguageChange = () => {
+  #handleLanguageMode = () => {
     this.#model.changeLanguage();
     this.#view.displayLanguage(
       this.#model.keyInfo,
@@ -28,6 +29,15 @@ class Controller {
       this.#model.language,
       // this.#model.capsLockMode,
     );
+  };
+
+  #handleShiftMode = () => {
+    this.#model.changeShiftMode();
+    if (this.#model.shiftMode) {
+      this.#view.displayShiftMode(this.#model.keyInfo, this.#model.language);
+    } else {
+      this.#view.displayLanguage(this.#model.keyInfo, this.#model.language);
+    }
   };
 }
 

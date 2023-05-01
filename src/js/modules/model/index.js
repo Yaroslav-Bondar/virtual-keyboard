@@ -9,6 +9,8 @@ class Model {
 
   #capsLockMode = 'lowercase';
 
+  #shiftMode = false;
+
   constructor(language) {
     if (!keyInfo[this.#LANGUAGE_DATA_KEY].includes(language)) throw new Error('Language is not specified in the data');
     if (!this.language) this.language = language;
@@ -20,6 +22,14 @@ class Model {
 
   get renderKeyList() {
     return renderKeyList;
+  }
+
+  get shiftMode() {
+    return this.#shiftMode;
+  }
+
+  changeShiftMode() {
+    this.#shiftMode = !this.#shiftMode;
   }
 
   get langChangeList() {
