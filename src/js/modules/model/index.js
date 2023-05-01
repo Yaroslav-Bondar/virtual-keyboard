@@ -1,6 +1,4 @@
 const { keyInfo } = require('../../data/keys/keyInfo');
-// const { renderKeyList } = require('../../data/keys/renderKeyList');
-// const { langChangeList } = require('../../data/keys/langChangeList');
 
 class Model {
   #LANGUAGE_SETTING_KEY = 'language';
@@ -20,10 +18,6 @@ class Model {
     return keyInfo;
   }
 
-  get renderKeyList() {
-    return renderKeyList;
-  }
-
   get shiftMode() {
     return this.#shiftMode;
   }
@@ -40,17 +34,17 @@ class Model {
     localStorage.setItem(this.#LANGUAGE_SETTING_KEY, language);
   }
 
+  switchLanguage() {
+    const lang = keyInfo[this.#LANGUAGE_DATA_KEY].filter((item) => item !== this.language);
+    this.language = lang;
+  }
+
   get capsLockMode() {
     return this.#capsLockMode;
   }
 
   switchCapsLockMode() {
     this.#capsLockMode = !this.#capsLockMode;
-  }
-
-  switchLanguage() {
-    const lang = keyInfo[this.#LANGUAGE_DATA_KEY].filter((item) => item !== this.language);
-    this.language = lang;
   }
 }
 

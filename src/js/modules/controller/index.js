@@ -14,7 +14,6 @@ class Controller {
     if (this.#mountPoint === null) throw new Error('Mount point is null.');
     this.#model = new Model(language);
     this.#view = new View(this.#mountPoint);
-    // this.#model.renderKeyList,
     this.#view.render(this.#model.keyInfo, this.#model.language);
     this.#view.bindLanguageMode(this.#handleLanguageMode);
     this.#view.bindShiftMode(this.#handleShiftMode);
@@ -26,7 +25,6 @@ class Controller {
     this.#model.switchLanguage();
     this.#view.displayLanguage(
       this.#model.keyInfo,
-      // this.#model.langChangeList,
       this.#model.language,
       this.#model.capsLockMode,
     );
@@ -35,9 +33,17 @@ class Controller {
   #handleShiftMode = () => {
     this.#model.switchShiftMode();
     if (this.#model.shiftMode) {
-      this.#view.displayShiftMode(this.#model.keyInfo, this.#model.language, this.#model.capsLockMode);
+      this.#view.displayShiftMode(
+        this.#model.keyInfo,
+        this.#model.language,
+        this.#model.capsLockMode,
+      );
     } else {
-      this.#view.displayLanguage(this.#model.keyInfo, this.#model.language, this.#model.capsLockMode);
+      this.#view.displayLanguage(
+        this.#model.keyInfo,
+        this.#model.language,
+        this.#model.capsLockMode,
+      );
     }
   };
 
@@ -46,7 +52,11 @@ class Controller {
     if (this.#model.capsLockMode) {
       this.#view.displayCapsLockMode(this.#model.keyInfo, this.#model.language);
     } else {
-      this.#view.displayLanguage(this.#model.keyInfo, this.#model.language, this.#model.capsLockMode);
+      this.#view.displayLanguage(
+        this.#model.keyInfo,
+        this.#model.language,
+        this.#model.capsLockMode,
+      );
     }
   };
 }

@@ -3,14 +3,6 @@ class View {
 
   #keyboard;
 
-  #ALPHANUM_TYPE_KEY = 'alphanum';
-
-  // #DIGIT_TYPE_KEY = 'digit';
-
-  #LOWERCASE_MODE = 'lowercase';
-
-  #UPPERCASE_MODE = 'uppercase';
-
   constructor(mountPoint) {
     this.#mountPoint = mountPoint;
     this.#keyboard = this.createElement('div', ['keyboard']);
@@ -18,7 +10,9 @@ class View {
 
   createElement(tag, classes, attributeName, attributeValue) {
     const element = document.createElement(tag);
-    element.classList.add(...classes);
+    if (classes) {
+      element.classList.add(...classes);
+    }
     if (attributeName && attributeValue) {
       element.setAttribute(attributeName, `${attributeValue}`);
     }
@@ -41,7 +35,11 @@ class View {
       });
       this.#keyboard.append(areaHtml);
     });
-    this.#mountPoint.prepend(this.#keyboard);
+    const titleHtml = this.createElement('h1');
+    titleHtml.textContent = 'Virtual keyboard';
+    const descriptionHtml = this.createElement('h5');
+    descriptionHtml.textContent = 'Os Linux; Language switch: left alt -> ctl.';
+    this.#mountPoint.prepend(titleHtml, descriptionHtml, this.#keyboard);
   }
 
   bindLanguageMode(handler) {
@@ -52,7 +50,6 @@ class View {
     });
   }
 
-  // list, lang, capsLockMode
   displayLanguage(keyInfo, lang, capsLockMode) {
     Object.keys(keyInfo).forEach((keyCode) => {
       const langModePath = keyInfo[keyCode].langMode;
@@ -77,7 +74,6 @@ class View {
   bindShiftMode(handler) {
     document.addEventListener('keydown', (event) => {
       if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
-        console.log('event', event);
         handler();
       }
     });

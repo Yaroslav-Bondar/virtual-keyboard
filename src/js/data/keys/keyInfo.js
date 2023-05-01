@@ -48,6 +48,33 @@ const keyInfo = {
         'KeyL',
         'Semicolon',
         'Quote',
+        'Enter',
+      ],
+      rowB: [
+        'ShiftLeft',
+        'KeyZ',
+        'KeyX',
+        'KeyC',
+        'KeyV',
+        'KeyB',
+        'KeyN',
+        'KeyM',
+        'Comma',
+        'Period',
+        'Slash',
+        'ArrowUp',
+        'ShiftRight',
+      ],
+      rowA: [
+        'ControlLeft',
+        'OSLeft',
+        'AltLeft',
+        'Space',
+        'AltRight',
+        'ArrowLeft',
+        'ArrowDown',
+        'ArrowRight',
+        'ControlRight',
       ],
     },
   },
@@ -581,13 +608,255 @@ const keyInfo = {
     },
     classes: ['key', 'key_theme_light', 'key_size_xs'],
   },
-
-  KeyZ: {
-    uk: {
-      lowercase: 'я',
-      uppercase: 'Я',
+  // TODO: setting display without langMode
+  Enter: {
+    langMode: {
+      en: 'Enter',
+      uk: 'Enter',
     },
+    classes: ['key', 'key_theme_dark', 'key_size_lg'],
   },
+  // TODO: setting display without langMode
+  ShiftLeft: {
+    langMode: {
+      en: 'Shift',
+      uk: 'Shift',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_lg'],
+  },
+  KeyZ: {
+    shiftMode: {
+      en: 'Z',
+      uk: 'Я',
+    },
+    capsLockMode: {
+      en: 'Z',
+      uk: 'Я',
+    },
+    langMode: {
+      en: 'z',
+      uk: 'я',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  KeyX: {
+    shiftMode: {
+      en: 'X',
+      uk: 'Ч',
+    },
+    capsLockMode: {
+      en: 'X',
+      uk: 'Ч',
+    },
+    langMode: {
+      en: 'x',
+      uk: 'ч',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  KeyC: {
+    shiftMode: {
+      en: 'C',
+      uk: 'С',
+    },
+    capsLockMode: {
+      en: 'C',
+      uk: 'С',
+    },
+    langMode: {
+      en: 'c',
+      uk: 'с',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  KeyV: {
+    shiftMode: {
+      en: 'V',
+      uk: 'М',
+    },
+    capsLockMode: {
+      en: 'V',
+      uk: 'М',
+    },
+    langMode: {
+      en: 'v',
+      uk: 'м',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  KeyB: {
+    shiftMode: {
+      en: 'B',
+      uk: 'И',
+    },
+    capsLockMode: {
+      en: 'B',
+      uk: 'И',
+    },
+    langMode: {
+      en: 'b',
+      uk: 'и',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  KeyN: {
+    shiftMode: {
+      en: 'N',
+      uk: 'Т',
+    },
+    capsLockMode: {
+      en: 'N',
+      uk: 'Т',
+    },
+    langMode: {
+      en: 'n',
+      uk: 'т',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  KeyM: {
+    shiftMode: {
+      en: 'M',
+      uk: 'Ь',
+    },
+    capsLockMode: {
+      en: 'M',
+      uk: 'Ь',
+    },
+    langMode: {
+      en: 'm',
+      uk: 'ь',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  Comma: {
+    shiftMode: {
+      en: '<',
+      uk: 'Б',
+    },
+    capsLockMode: {
+      uk: 'Б',
+    },
+    langMode: {
+      en: ',',
+      uk: 'б',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  Period: {
+    shiftMode: {
+      en: '>',
+      uk: 'Ю',
+    },
+    capsLockMode: {
+      uk: 'Ю',
+    },
+    langMode: {
+      en: '.',
+      uk: 'ю',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  Slash: {
+    shiftMode: {
+      en: '?',
+      uk: ',',
+    },
+    langMode: {
+      en: '/',
+      uk: '.',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  ArrowUp: {
+    langMode: {
+      en: '▲',
+      uk: '▲',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  ShiftRight: {
+    langMode: {
+      en: 'Shift',
+      uk: 'Shift',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_lg'],
+  },
+  // TODO: setting display without langMode
+  ControlLeft: {
+    langMode: {
+      en: 'Ctrl',
+      uk: 'Ctrl',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  OSLeft: {
+    langMode: {
+      en: 'OS',
+      uk: 'OS',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  AltLeft: {
+    langMode: {
+      en: 'Alt',
+      uk: 'Alt',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  Space: {
+    langMode: {
+      en: '',
+      uk: '',
+    },
+    classes: ['key', 'key_theme_light', 'key_size_xl'],
+  },
+  // TODO: setting display without langMode
+  AltRight: {
+    langMode: {
+      en: 'Alt',
+      uk: 'Alt',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  ArrowLeft: {
+    langMode: {
+      en: '◄',
+      uk: '◄',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  ArrowDown: {
+    langMode: {
+      en: '▼',
+      uk: '▼',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  ArrowRight: {
+    langMode: {
+      en: '►',
+      uk: '►',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+  // TODO: setting display without langMode
+  ControlRight: {
+    langMode: {
+      en: 'Ctr',
+      uk: 'Ctr',
+    },
+    classes: ['key', 'key_theme_dark', 'key_size_xs'],
+  },
+
 };
 
 module.exports.keyInfo = keyInfo;

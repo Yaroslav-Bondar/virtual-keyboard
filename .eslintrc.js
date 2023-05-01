@@ -11,12 +11,6 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    'class-methods-use-this': ['error', {
-      exceptMethods: ['keyInfo',
-        'renderKeyList',
-        'langChangeList',
-        'createElement',
-        'bindLanguageChange'],
-    }],
+    'class-methods-use-this': 'off',
   },
 };
