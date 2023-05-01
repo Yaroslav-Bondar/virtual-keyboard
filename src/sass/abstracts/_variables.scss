@@ -73,12 +73,14 @@ $color-dimgray: dimgray;
 
 // padding
 $keyboard-padding: 10px;
+$key-padding: 5px;
 
 // border
 $key-border-radius: 3px;
 $keyboard-border: 5px solid $color-black;
 
 // gap
+$keyboard-column-gap: 7px;
 $keyboard-row-gap: 7px;
 
 // background

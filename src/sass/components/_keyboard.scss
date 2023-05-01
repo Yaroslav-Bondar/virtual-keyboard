@@ -1,7 +1,12 @@
 .keyboard {
-  width: 800px;
+  width: 892px;
   padding: $keyboard-padding;
   border: $keyboard-border;
   border-radius: $key-border-radius;
   background-color: $light-grey;
+  &__alphanumeric {
+    display: flex;
+    flex-flow: column;
+    row-gap: $keyboard-row-gap;
+  }
 }

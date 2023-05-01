@@ -1,13 +1,13 @@
 const { keyInfo } = require('../../data/keys/keyInfo');
-const { renderKeyList } = require('../../data/keys/renderKeyList');
-const { langChangeList } = require('../../data/keys/langChangeList');
+// const { renderKeyList } = require('../../data/keys/renderKeyList');
+// const { langChangeList } = require('../../data/keys/langChangeList');
 
 class Model {
   #LANGUAGE_SETTING_KEY = 'language';
 
   #LANGUAGE_DATA_KEY = 'languages';
 
-  #capsLockMode = 'lowercase';
+  #capsLockMode = false;
 
   #shiftMode = false;
 
@@ -28,12 +28,8 @@ class Model {
     return this.#shiftMode;
   }
 
-  changeShiftMode() {
+  switchShiftMode() {
     this.#shiftMode = !this.#shiftMode;
-  }
-
-  get langChangeList() {
-    return langChangeList;
   }
 
   get language() {
@@ -48,7 +44,11 @@ class Model {
     return this.#capsLockMode;
   }
 
-  changeLanguage() {
+  switchCapsLockMode() {
+    this.#capsLockMode = !this.#capsLockMode;
+  }
+
+  switchLanguage() {
     const lang = keyInfo[this.#LANGUAGE_DATA_KEY].filter((item) => item !== this.language);
     this.language = lang;
   }

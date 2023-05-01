@@ -46,11 +46,30 @@ class View {
 
   bindLanguageMode(handler) {
     document.addEventListener('keydown', (event) => {
-      // console.log('event', event);
       if (event.code === 'ControlLeft' && event.altKey) {
-        // console.log('event', true);
-        // if (event.code === 'ControlLeft' && event.code === 'AltLeft') {
         handler();
+      }
+    });
+  }
+
+  // list, lang, capsLockMode
+  displayLanguage(keyInfo, lang, capsLockMode) {
+    Object.keys(keyInfo).forEach((keyCode) => {
+      const langModePath = keyInfo[keyCode].langMode;
+      if (langModePath) {
+        let value;
+        if (capsLockMode) {
+          const capsLockModePath = keyInfo[keyCode].capsLockMode;
+          if (capsLockModePath && capsLockModePath[lang]) {
+            value = capsLockModePath[lang];
+          } else {
+            value = langModePath[lang];
+          }
+        } else {
+          value = langModePath[lang];
+        }
+        const key = this.#keyboard.querySelector(`[data-key-code=${keyCode}]`);
+        key.textContent = value;
       }
     });
   }
@@ -64,32 +83,52 @@ class View {
     });
     document.addEventListener('keyup', (event) => {
       if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
-        console.log('event', event);
         handler();
       }
     });
   }
 
-  displayShiftMode(keyInfo, lang) {
+  displayShiftMode(keyInfo, lang, capsLockMode) {
     Object.keys(keyInfo).forEach((keyCode) => {
       const shiftModePath = keyInfo[keyCode].shiftMode;
       if (shiftModePath) {
-        const value = shiftModePath[lang];
+        let value;
+        if (capsLockMode) {
+          const capsLockModePath = keyInfo[keyCode].capsLockMode;
+          if (capsLockModePath && capsLockModePath[lang]) {
+            const langModePath = keyInfo[keyCode].langMode;
+            if (langModePath) {
+              value = langModePath[lang];
+            }
+          } else {
+            value = shiftModePath[lang];
+          }
+        } else {
+          value = shiftModePath[lang];
+        }
         const key = this.#keyboard.querySelector(`[data-key-code=${keyCode}]`);
         key.textContent = value;
       }
     });
-    // console.log('shift mode', shiftMode);
   }
 
-  // list, lang, capsLockMode
-  displayLanguage(keyInfo, lang) {
+  bindCapsLockMode(handler) {
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'CapsLock') {
+        handler();
+      }
+    });
+  }
+
+  displayCapsLockMode(keyInfo, lang) {
     Object.keys(keyInfo).forEach((keyCode) => {
-      const langModePath = keyInfo[keyCode].langMode;
-      if (langModePath) {
-        const value = langModePath[lang];
-        const key = this.#keyboard.querySelector(`[data-key-code=${keyCode}]`);
-        key.textContent = value;
+      const capsModePath = keyInfo[keyCode].capsLockMode;
+      if (capsModePath) {
+        const value = capsModePath[lang];
+        if (value) {
+          const key = this.#keyboard.querySelector(`[data-key-code=${keyCode}]`);
+          key.textContent = value;
+        }
       }
     });
   }
