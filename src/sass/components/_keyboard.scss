@@ -1,0 +1,14 @@
+.keyboard {
+  width: 892px;
+  padding: $keyboard-padding;
+  margin: 0 auto;
+  border: $keyboard-border;
+  border-radius: $key-border-radius;
+  background-color: $light-grey;
+  @include font-montserrat-bold;
+  &__alphanumeric {
+    display: flex;
+    flex-flow: column;
+    row-gap: $keyboard-row-gap;
+  }
+}
